@@ -1,4 +1,9 @@
 # file: ~/.gitignore_global
-.DS_Store
+*.iml
+.gradle
+/local.properties
 .idea
-.iml
+.DS_Store
+/build
+/captures
+.externalNativeBuild
