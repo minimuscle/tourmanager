@@ -3,10 +3,23 @@ public class Position {
     private int xPos;
     private int yPos;
 
+    private static final int DEFAULT_COORD = 1;
+
     //Constructor takes an X and a Y coordinate
     public Position(int xPos, int yPos) {
-        this.xPos = xPos;
-        this.yPos = yPos;
+        if(xPos > 0) {
+            this.xPos = xPos;
+        } else {
+            System.out.println("Invalid xPos, defaulting to xPos = " + DEFAULT_COORD);
+            this.xPos = DEFAULT_COORD;
+        }
+
+        if(yPos > 0) {
+            this.yPos = yPos;
+        } else {
+            System.out.println("Invalid yPos, defaulting to yPos = " + DEFAULT_COORD);
+            this.yPos = DEFAULT_COORD;
+        }
     }
 
     // Getter Methods
