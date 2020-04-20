@@ -1,3 +1,6 @@
+
+/* Class Position will represent the X and Y coordinates of locations*/
+
 public class Position {
 
     private int xPos;
@@ -7,19 +10,9 @@ public class Position {
 
     //Constructor takes an X and a Y coordinate
     public Position(int xPos, int yPos) {
-        if(xPos > 0) {
-            this.xPos = xPos;
-        } else {
-            System.out.println("Invalid xPos, defaulting to xPos = " + DEFAULT_COORD);
-            this.xPos = DEFAULT_COORD;
-        }
+        this.xPos = validateCoordinate(xPos);
+        this.yPos = validateCoordinate(yPos);
 
-        if(yPos > 0) {
-            this.yPos = yPos;
-        } else {
-            System.out.println("Invalid yPos, defaulting to yPos = " + DEFAULT_COORD);
-            this.yPos = DEFAULT_COORD;
-        }
     }
 
     // Getter Methods
@@ -46,5 +39,16 @@ public class Position {
         } else {
             System.out.println("Y-Coord of " + yPos + " is invalid. Please enter a value greater than 0.");
         }
+    }
+
+    public int validateCoordinate(int pos) {
+        int temp;
+        if(xPos > 0) {
+            temp = pos;
+        } else {
+            System.out.println("Invalid xPos, defaulting to xPos = " + DEFAULT_COORD);
+            temp = DEFAULT_COORD;
+        }
+        return temp;
     }
 }

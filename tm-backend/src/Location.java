@@ -9,34 +9,37 @@ public class Location {
     REMOVE existing locations */
 
     private String name;
-    //coords
+    private Position position;
     private String description;
     private double minDuration;
 
-    public Location(String name, String description, double minDuration) {
+    public Location(String name, String description, Position position, double minDuration) {
         this.name = name;
         this.description = description;
         this.minDuration = minDuration;
+        this.position = position;
     }
 
+    // Getter methods
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public double getMinDuration() {
+        return minDuration;
     }
 
     public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    // Setter methods
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public double getMinDuration() {
-        return minDuration;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public void setMinDuration(double minDuration) {
