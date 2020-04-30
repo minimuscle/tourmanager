@@ -1,0 +1,68 @@
+.App {
+    text-align: center;
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+}
+
+.Login {
+    background-color: white;
+    padding: 1em 2em;
+    border-radius: 10px;
+}
+
+.dashboard {
+    margin-left: 17vw;
+    background-color: white;
+    color: black;
+}
+
+.sidebar {
+    width: 275px;
+    height: 100%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    background-color: #2a3038;
+    color: white;
+    display: block;
+    padding-top: 50px;
+    -webkit-app-region: drag;
+}
+
+button:hover {
+    color: rgb(88, 213, 255);
+}
+
+button:active {
+    color: rgb(73, 73, 255);
+}
+
+button:focus {
+    outline: none;
+}
+
+.sideButtons {
+    background-color: #2a3038;
+    color: white;
+    border: none;
+    font-size: xx-large;
+    padding: 0.5em 1em 0.5em 1em;
+}
+
+.logout {
+    position: absolute;
+    bottom: 0;
+}
+
+.settings {
+    position: absolute;
+    bottom: 2.25em;
+}

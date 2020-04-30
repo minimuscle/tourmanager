@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
-import Login from './Components/Login/Login'
-import Dashboard from './Components/Dashboard/Dashboard'
-import Sidebar from './Components/Sidebar/Sidebar'
+import Login from './Components/Login'
+import Dashboard from './Components/Dashboard'
+import Sidebar from './Components/Sidebar'
+import Locations from './Components/Locations'
+import Tours from './Components/Tours'
+import Settings from './Components/Settings'
 import './App.css';
 
 export default class App extends Component {
@@ -22,7 +25,7 @@ export default class App extends Component {
 
   selectedUser(user) {
     this.setState({
-      assistant: user
+      user: user
     });
     console.log(this.state.user);
   }
@@ -30,14 +33,29 @@ export default class App extends Component {
   render(){
   //Render the correct screen
   switch (this.state.activeView) {
-    case "Login":
+    case "Logout":
       return(
-      <div><Login/></div>
+      <div><Login changeView={this.onChangeView.bind(this)}/></div>
       );
     case "Dashboard":
       return(
-        <div><Sidebar/>
-        <Dashboard user={this.selectedUser.bind(this)}/></div>
+        <div><Sidebar changeView={this.onChangeView.bind(this)}/>
+        <Dashboard changeView={this.onChangeView.bind(this)} user={this.selectedUser.bind(this)} className="Main"/></div>
+      );
+    case "Locations":
+      return(
+        <div><Sidebar changeView={this.onChangeView.bind(this)}/>
+        <Locations changeView={this.onChangeView.bind(this)} user={this.selectedUser.bind(this)} className="Main"/></div>
+      );
+    case "Tours":
+      return(
+        <div><Sidebar changeView={this.onChangeView.bind(this)}/>
+        <Tours changeView={this.onChangeView.bind(this)} user={this.selectedUser.bind(this)} className="Main"/></div>
+      );
+    case "Settings":
+      return(
+        <div><Sidebar changeView={this.onChangeView.bind(this)}/>
+        <Settings changeView={this.onChangeView.bind(this)} user={this.selectedUser.bind(this)} className="Main"/></div>
       );
     //Assumes no activeView (eg. error)
     default:
