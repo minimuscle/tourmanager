@@ -41,9 +41,11 @@ public class Position {
         }
     }
 
+    // Since X and Y coordinates can't be 0 or less, if and x or y
+    //coordinate is less than 1 then the coordinate defaults to 1
     public int validateCoordinate(int pos) {
         int temp;
-        if(xPos > 0) {
+        if(pos > 0) {
             temp = pos;
         } else {
             System.out.println("Invalid xPos, defaulting to xPos = " + DEFAULT_COORD);
