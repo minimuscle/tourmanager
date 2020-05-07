@@ -49,7 +49,7 @@ export default class Sidebar extends Component {
           <button className="sideButtons" onClick={this.tours.bind(this)}>
             <Icon name='map signs' size="" className='icons'/>Tours
           </button><br/>
-          <button className="sideButtons settings" onClick={this.settings.bind(this)}>
+          <button className="sideButtons settingsBtn" onClick={this.settings.bind(this)}>
             <Icon name='cog' size="" className='icons'/>Settings
           </button><br/>
           <button className="sideButtons logout" onClick={this.logout.bind(this)}>

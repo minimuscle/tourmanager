@@ -17,9 +17,14 @@
 }
 
 .dashboard {
-    margin-left: 17vw;
+    margin-left: 275px;
     background-color: white;
     color: black;
+}
+
+.dashboard .header {
+    padding-top: 25px;
+    text-align: center;
 }
 
 .sidebar {
@@ -62,7 +67,26 @@ button:focus {
     bottom: 0;
 }
 
-.settings {
+.settingsBtn {
     position: absolute;
     bottom: 2.25em;
+}
+
+
+.settingsTab {
+    float: left;
+    padding: 30px;
+    width: 33%;
+    border-right: 1px solid #cccccc;
+
+}
+
+.settingsTab2 {
+    float: left;
+    padding: 30px;
+    width: 30%;
+}
+
+.locations {
+    padding: 30px;
 }

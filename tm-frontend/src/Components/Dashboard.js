@@ -1,10 +1,15 @@
 import React from 'react';
 import './style.css'
+import { Header } from 'semantic-ui-react'
 
 function App() {
   return (
     <div className="dashboard">
-      <h1>Dashboard</h1>
+      <div className="header">
+        <Header as='h1'>
+        Dashboard
+        </Header>
+      </div>
     </div>
   );
 }
