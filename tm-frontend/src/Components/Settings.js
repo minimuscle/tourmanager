@@ -92,7 +92,7 @@ export default class Settings extends Component {
             Deactivate User
           </Header>
           <Form onSubmit={this.handleSubmit.bind(this)}>
-            <Form.Select fluid label="Role" options={users} placeholder="Role" />
+            <Form.Select fluid label="User" options={users} placeholder="User" />
             <Form.Button negative content="Deactivate User"></Form.Button>
           </Form>
         </div>
