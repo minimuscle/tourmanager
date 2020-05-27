@@ -15,7 +15,7 @@ export default class EditLocation extends Component {
       <div className="dashboard">
         <div className="header">
           <Header as='h1' icon>
-            <Icon name='move' />
+            <Icon name='map signs' />
               Edit Locations
             <Header.Subheader>
               Edit the details of each specific location
@@ -41,7 +41,7 @@ export default class EditLocation extends Component {
                 <label>Length:</label>
                 <Input placeholder="8"/>
               </Form.Field>
-              <Form.Button primary content="Save Tour"></Form.Button>
+              <Form.Button primary content="Save Location"></Form.Button>
             </Form>
 
           </div>
