@@ -10,10 +10,6 @@ export default class Sidebar extends Component {
     };
   }
 
-  dashboard() {
-    this.props.changeView('Dashboard');
-  }
-
   locations() {
     this.props.changeView('Locations');
   }
@@ -40,9 +36,6 @@ export default class Sidebar extends Component {
    return (
       <div>
         <div className="sidebar">
-          <button className="sideButtons" onClick={this.dashboard.bind(this)}>
-            <Icon name='home' size="" className='icons'/>Dashboard
-          </button><br/>
           <button className="sideButtons" onClick={this.locations.bind(this)}>
             <Icon name='map' size="" className='icons'/>Locations
           </button><br/>

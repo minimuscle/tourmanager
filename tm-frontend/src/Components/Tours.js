@@ -5,6 +5,13 @@ import { Header, Icon, Table, Button } from 'semantic-ui-react'
 
 
 export default class Tours extends Component {
+  constructor(props) {
+    super();
+  }
+
+  editTours() {
+    this.props.changeView('EditTours');
+  }
 
   render() {
     return (
@@ -34,7 +41,7 @@ export default class Tours extends Component {
                   >
                     <Icon name='map marker' /> Add New Tour
                   </Button>
-                  <Button size='small'>Edit Tours</Button>
+                  <Button size='small' onClick={this.editTours.bind(this)}>Edit Tours</Button>
                 </Table.HeaderCell>
               </Table.Row>
             </Table.Header>

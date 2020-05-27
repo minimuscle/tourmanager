@@ -90,3 +90,13 @@ button:focus {
 .locations {
     padding: 30px;
 }
+
+.editForms {
+    padding: 30px;
+    margin-left: 30%;
+    margin-right: 30%;
+}
+
+.floatLeft {
+    float: left;
+}
