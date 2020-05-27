@@ -1,0 +1,113 @@
+/* Login Screen */
+.login {
+  background-color: #2a3038;
+  color: white;
+  display: flex;
+  margin: auto;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  -webkit-app-region: drag;
+}
+
+.login .logo {
+  height: 15em;
+  float: left;
+  display: block;
+}
+
+
+/* Title Bar */
+.titlebar {
+  background-color: #2a3038;
+  height: 20px;
+  -webkit-app-region: drag;
+}
+
+
+
+/* Sidebar Content */
+.sidebar {
+  width: 225px;
+  height: 100%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  background-color: #2a3038;
+  color: white;
+  display: block;
+  padding-top: 20px;
+  -webkit-app-region: drag;
+}
+
+.sidebar hr {
+  background-color: #3f4a58;
+  border: none;
+  width: 90%;
+  text-align: center;
+  margin: 30px auto 10px;
+} 
+
+.sidebar button {
+  color: #aaaaaa;
+  text-decoration: none;
+  background: none;
+  border: none;
+  width: 100%;
+}
+
+.sidebar button:hover, button:active {
+  color: white;
+  background-color: #383f49;
+}
+
+.sidebar button p {
+  text-align: left;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 2vw;
+  font-size: 1.5em;
+  -webkit-app-region: no-drag;
+}
+
+
+.center {
+  padding: 10px 10px 10px 55px;
+}
+
+.profile {
+  padding: 15px 10px 15px 0px!important;
+  background-color: #383f49!important;
+  width: 100%;
+}
+
+.logout p {
+  font-size: 1em!important;
+}
+
+.sidebarLogo { 
+  height: 150px;
+  padding-left: 31px;
+}
+
+
+/* Main Content */
+
+.content {
+  padding: 3vh 0vw 3vh 4vw;
+  background-color: white;
+  margin-left: 225px;
+  height: 100vh;
+  width: calc(100% - 225px - 4vw);
+  -webkit-app-region: drag;
+}
+
+.popup {
+  margin-left: 0px!important;
+}
+
+.taskButton {
+  padding-bottom: 45px;
+}
