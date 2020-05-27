@@ -51,12 +51,12 @@ public abstract class Account {
 //        this.accType = accType;
 //    }
 
-    public void printUser() {
-        System.out.println("First Name: " + getFirstName()
-        + "\nLast Name: " + getLastName()
-        + "\nEmployee ID: " + getEmployID()
-        + "\nAccount Type: " + getAccType()
-        + "\nAccount Active: " + getStatus());
+    public void printUser(Account account) {
+        System.out.println("First Name: " + account.getFirstName()
+        + "\nLast Name: " + account.getLastName()
+        + "\nEmployee ID: " + account.getEmployID()
+        + "\nAccount Type: " + account.getAccType()
+        + "\nAccount Active: " + account.getStatus());
     }
 
     // Method to disable an account that is currently active
