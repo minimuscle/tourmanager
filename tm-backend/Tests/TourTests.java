@@ -19,7 +19,6 @@ public class TourTests {
     
     @Before
     public void sysOut () {
-        System.out.print("Begin Test Tour\n");
         testTour.addLocation(testLocation);
     	testTour.addLocation(testPlace);
     } 
@@ -60,7 +59,6 @@ public class TourTests {
     public void calcMinTotalDurationTest() {
     	Double result = testTour.calcMinTotalDuration();
     	assertEquals(result, 71.7, Double.NaN);
-    	System.out.println(result);
     }
     
     @Test
@@ -68,7 +66,6 @@ public class TourTests {
     	testTour.setMinDuration(testTour.calcMinTotalDuration());
     	testTour.updateMinTotDuration();
     	Double result = testTour.getMinDuration();
-		System.out.println(result);
     	assertEquals(result, 71.7, Double.NaN);
     }
     
