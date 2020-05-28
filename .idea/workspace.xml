@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="f6d9f4bd-e6ef-499d-857e-76cb3b4af994" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/tourmanager.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tm-backend/Tests/AccountTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tm-backend/Tests/AdminTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tm-backend/Tests/LocationTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tm-backend/Tests/PositionTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tm-backend/Tests/TourTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tm-backend/out/production/tm-backend/Account.class" beforeDir="false" afterPath="$PROJECT_DIR$/tm-backend/out/production/tm-backend/Account.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tm-backend/out/production/tm-backend/AccountType.class" beforeDir="false" afterPath="$PROJECT_DIR$/tm-backend/out/production/tm-backend/AccountType.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tm-backend/out/production/tm-backend/Admin.class" beforeDir="false" afterPath="$PROJECT_DIR$/tm-backend/out/production/tm-backend/Admin.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tm-backend/out/production/tm-backend/Assistant.class" beforeDir="false" afterPath="$PROJECT_DIR$/tm-backend/out/production/tm-backend/Assistant.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tm-backend/out/production/tm-backend/Location.class" beforeDir="false" afterPath="$PROJECT_DIR$/tm-backend/out/production/tm-backend/Location.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tm-backend/out/production/tm-backend/Login.class" beforeDir="false" afterPath="$PROJECT_DIR$/tm-backend/out/production/tm-backend/Login.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tm-backend/out/production/tm-backend/Position.class" beforeDir="false" afterPath="$PROJECT_DIR$/tm-backend/out/production/tm-backend/Position.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tm-backend/out/production/tm-backend/Tour.class" beforeDir="false" afterPath="$PROJECT_DIR$/tm-backend/out/production/tm-backend/Tour.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tm-backend/out/production/tm-backend/TourType.class" beforeDir="false" afterPath="$PROJECT_DIR$/tm-backend/out/production/tm-backend/TourType.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tm-backend/out/production/tm-backend/main.class" beforeDir="false" afterPath="$PROJECT_DIR$/tm-backend/out/production/tm-backend/main.class" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1akVwx93XvJSZrmDewXSWsS2pGm" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/tm-backend" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f6d9f4bd-e6ef-499d-857e-76cb3b4af994" name="Default Changelist" comment="" />
+      <created>1587279820250</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1587279820250</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="669" y="139" key="#Unnamed" timestamp="1587293383251">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="669" y="139" key="#Unnamed/0.0.1920.1040@0.0.1920.1040" timestamp="1587293383251" />
+    <state x="770" y="137" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1588215818804">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="770" y="137" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1588215818804" />
+    <state x="689" y="310" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1588215817605">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="689" y="310" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1588215817605" />
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1588215898384">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1588215898384" />
+    <state x="440" y="94" key="SettingsEditor" timestamp="1588215831333">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="440" y="94" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1588215831333" />
+    <state x="299" y="203" width="1200" height="800" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1588215800753">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="299" y="203" width="1200" height="800" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1588215800753" />
+    <state x="616" y="242" key="run.anything.popup" timestamp="1587292381057">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="616" y="242" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1587292381057" />
+  </component>
+</project>
