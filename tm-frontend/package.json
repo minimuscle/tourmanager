@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^7.2.1",
     "body-parser": "*",
     "concurrently": "^5.2.0",
+    "cors": "^2.8.5",
     "express": "*",
     "express-session": "*",
     "nodemon": "^2.0.4",
