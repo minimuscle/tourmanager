@@ -30,7 +30,7 @@ export default class Settings extends Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:9000/users')
+    fetch('http://localhost:9000/api/users')
       .then(res => res.json())
       .then(res => {
         if (res && res.data) {

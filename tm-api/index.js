@@ -11,9 +11,6 @@ app.use(bodyParser.json());
 
 //Initialise routes
 app.use('/api', require('./routes/api'));
-app.use('/users', require('./routes/users'));
-app.use('/locations', require('./routes/locations'));
-app.use('/tours', require('./routes/tours'));
 
 
 //Listen for requests
