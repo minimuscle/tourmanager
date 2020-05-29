@@ -12,9 +12,23 @@ export default class Login extends Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:9000/api')
-      .then(res => res.text())
-      .then(res => this.setState({apiResponse: res}));
+    fetch('http://localhost:9000/locations')
+      .then(res => res.json())
+      .then(res => {
+        if (res && res.data) {
+          this.setState({ apiResponse: [...this.state.apiResponse, ...res.data] })
+        }
+      });
+  }
+
+  renderUsers() {
+    if (this.state.apiResponse.length <= 0) {
+      return <div>Loading...</div>
+    } else {
+      return this.state.apiResponse.map((val, key) => {
+        return <div key={key}>{val.name} | {val.age}</div>
+      })
+    }
   }
 
   dashboard() {
@@ -22,32 +36,30 @@ export default class Login extends Component {
   }
 
   render() {
-  return (
-    <div className="App">
-      <div className="Login">
-        <Header as="h1" icon>
-          <Icon name="sign-in" />
+    return (
+      <div className="App">
+        <div className="Login">
+          <Header as="h1" icon>
+            <Icon name="sign-in" />
           Welcome
           <Header.Subheader>
-            Please Login Below
+              Please Login Below
           </Header.Subheader>
           </Header>
-          {/**TODO: THIS LINE IS TO BE REMOVED, BUT SHOULD BE REMOVED ONCE API IS WORKING PROPERLY */}
-          <p style={{color: 'black'}}>{this.state.apiResponse}</p>
           <Form text-align="left">
             <Form.Field>
               <label>Username</label>
-      
+
               <input placeholder={this.props.activeView} />
             </Form.Field>
             <Form.Field>
               <label>Password</label>
-              <input placeholder='*********'/>
+              <input placeholder='*********' />
             </Form.Field>
             <Button type='submit' onClick={this.dashboard.bind(this)}>Submit</Button>
           </Form>
+        </div>
       </div>
-    </div>
-  );
-}
+    );
+  }
 }

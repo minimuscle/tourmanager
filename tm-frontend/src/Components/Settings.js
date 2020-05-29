@@ -23,7 +23,30 @@ const users = [
 
 export default class Settings extends Component {
   constructor(props) {
-    super();
+    super(props);
+    this.state = {
+      apiResponse: ''
+    };
+  }
+
+  componentDidMount() {
+    fetch('http://localhost:9000/users')
+      .then(res => res.json())
+      .then(res => {
+        if (res && res.data) {
+          this.setState({ apiResponse: [...this.state.apiResponse, ...res.data] })
+        }
+      });
+  }
+
+  renderUsers() {
+    if (this.state.apiResponse.length <= 0) {
+      return <div>Loading...</div>
+    } else {
+      return this.state.apiResponse.map((val, key) => {
+        return <p>this {val.type}</p>
+      })
+    }
   }
 
   handleSubmit() {
@@ -71,6 +94,7 @@ export default class Settings extends Component {
             Change Password
           </Header>
           <Form onSubmit={this.handleSubmit.bind(this)}>
+            <Form.Select fluid label="User" options={users} placeholder="User" />
             <Form.Input
               label='Old Password'
               placeholder="*********"

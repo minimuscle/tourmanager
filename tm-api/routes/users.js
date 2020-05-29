@@ -3,15 +3,10 @@ const request = require('request');
 const router = express.Router();
 
 router.get('/', function(req, res, next){
-	let dataArray = [
-        { name: "john", age: '12'},
-        { name: "jake", age: '13'},
-        { name: "james", age: '14'},
-        { name: "jimmy", age: '16'}
-    ]
+	user = require("../jsons/users.json");
 
     res.json({
-        data: dataArray
+        data: user
     })
 });
 

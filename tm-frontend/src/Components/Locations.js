@@ -6,7 +6,38 @@ import { Header, Icon, Table, Button } from 'semantic-ui-react'
 
 export default class Location extends Component {
   constructor(props) {
-    super();
+    super(props);
+    this.state = {
+      apiResponse: ''
+    };
+  }
+
+  componentDidMount() {
+    fetch('http://localhost:9000/locations')
+      .then(res => res.json())
+      .then(res => {
+        if (res && res.data) {
+          this.setState({ apiResponse: [...this.state.apiResponse, ...res.data] })
+        }
+      });
+  }
+
+  renderLocations() {
+    if (this.state.apiResponse.length <= 0) {
+      return <div>Loading...</div>
+    } else {
+      return this.state.apiResponse.map((val, key) => {
+        return (
+          <Table.Row key={key}>
+            <Table.Cell>{val.name}</Table.Cell>
+            <Table.Cell>{val.coordinates}</Table.Cell>
+            <Table.Cell>{val.description}</Table.Cell>
+            <Table.Cell>{val.time} Seconds</Table.Cell>
+            <Table.Cell><Button icon size="small"><Icon name="edit"></Icon></Button></Table.Cell>
+          </Table.Row>
+        )
+      })
+    }
   }
 
   editLocations() {
@@ -27,7 +58,6 @@ export default class Location extends Component {
         </div>
 
         <div className='locations'>
-          {/*This is just a placeholder for the locations*/}
           <Table striped celled>
             <Table.Header>
               <Table.Row>
@@ -55,83 +85,7 @@ export default class Location extends Component {
               </Table.Row>
             </Table.Header>
             <Table.Body>
-              <Table.Row>
-                <Table.Cell>Bag of Potatoes</Table.Cell>
-                <Table.Cell>45, 23</Table.Cell>
-                <Table.Cell>SCP-1689 is an infinite sack of potatoes. These potatoes continue to grow exponentially</Table.Cell>
-                <Table.Cell>8 Seconds</Table.Cell>
-                <Table.Cell><Button icon size="small"><Icon name="edit"></Icon></Button></Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell>Bag of Potatoes</Table.Cell>
-                <Table.Cell>45, 23</Table.Cell>
-                <Table.Cell>SCP-1689 is an infinite sack of potatoes. These potatoes continue to grow exponentially</Table.Cell>
-                <Table.Cell>8 Seconds</Table.Cell>
-                <Table.Cell><Button icon size="small"><Icon name="edit"></Icon></Button></Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell>Bag of Potatoes</Table.Cell>
-                <Table.Cell>45, 23</Table.Cell>
-                <Table.Cell>SCP-1689 is an infinite sack of potatoes. These potatoes continue to grow exponentially</Table.Cell>
-                <Table.Cell>8 Seconds</Table.Cell>
-                <Table.Cell><Button icon size="small"><Icon name="edit"></Icon></Button></Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell>Bag of Potatoes</Table.Cell>
-                <Table.Cell>45, 23</Table.Cell>
-                <Table.Cell>SCP-1689 is an infinite sack of potatoes. These potatoes continue to grow exponentially</Table.Cell>
-                <Table.Cell>8 Seconds</Table.Cell>
-                <Table.Cell><Button icon size="small"><Icon name="edit"></Icon></Button></Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell>Bag of Potatoes</Table.Cell>
-                <Table.Cell>45, 23</Table.Cell>
-                <Table.Cell>SCP-1689 is an infinite sack of potatoes. These potatoes continue to grow exponentially</Table.Cell>
-                <Table.Cell>8 Seconds</Table.Cell>
-                <Table.Cell><Button icon size="small"><Icon name="edit"></Icon></Button></Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell>Bag of Potatoes</Table.Cell>
-                <Table.Cell>45, 23</Table.Cell>
-                <Table.Cell>SCP-1689 is an infinite sack of potatoes. These potatoes continue to grow exponentially</Table.Cell>
-                <Table.Cell>8 Seconds</Table.Cell>
-                <Table.Cell><Button icon size="small"><Icon name="edit"></Icon></Button></Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell>Bag of Potatoes</Table.Cell>
-                <Table.Cell>45, 23</Table.Cell>
-                <Table.Cell>SCP-1689 is an infinite sack of potatoes. These potatoes continue to grow exponentially</Table.Cell>
-                <Table.Cell>8 Seconds</Table.Cell>
-                <Table.Cell><Button icon size="small"><Icon name="edit"></Icon></Button></Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell>Bag of Potatoes</Table.Cell>
-                <Table.Cell>45, 23</Table.Cell>
-                <Table.Cell>SCP-1689 is an infinite sack of potatoes. These potatoes continue to grow exponentially</Table.Cell>
-                <Table.Cell>8 Seconds</Table.Cell>
-                <Table.Cell><Button icon size="small"><Icon name="edit"></Icon></Button></Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell>Bag of Potatoes</Table.Cell>
-                <Table.Cell>45, 23</Table.Cell>
-                <Table.Cell>SCP-1689 is an infinite sack of potatoes. These potatoes continue to grow exponentially</Table.Cell>
-                <Table.Cell>8 Seconds</Table.Cell>
-                <Table.Cell><Button icon size="small"><Icon name="edit"></Icon></Button></Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell>Bag of Potatoes</Table.Cell>
-                <Table.Cell>45, 23</Table.Cell>
-                <Table.Cell>SCP-1689 is an infinite sack of potatoes. These potatoes continue to grow exponentially</Table.Cell>
-                <Table.Cell>8 Seconds</Table.Cell>
-                <Table.Cell><Button icon size="small"><Icon name="edit"></Icon></Button></Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell>Bag of Potatoes</Table.Cell>
-                <Table.Cell>45, 23</Table.Cell>
-                <Table.Cell>SCP-1689 is an infinite sack of potatoes. These potatoes continue to grow exponentially</Table.Cell>
-                <Table.Cell>8 Seconds</Table.Cell>
-                <Table.Cell><Button icon size="small"><Icon name="edit"></Icon></Button></Table.Cell>
-              </Table.Row>
+              {this.renderLocations()}
             </Table.Body>
           </Table>
         </div>
