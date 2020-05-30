@@ -1,17 +1,23 @@
 [
-    {
-        "username": "John",
-        "password": "1234",
-        "type": "admin"
-    },
-    {
-        "username": "James",
-        "password": "1234",
-        "type": "admin"
-    },
-    {
-        "username": "Jimmy",
-        "password": "1234",
-        "type": "assisstant"
-    }
+  {
+    "username": "John",
+    "password": "1234",
+    "type": "admin",
+    "active": true,
+    "login": false
+  },
+  {
+    "username": "James",
+    "password": "1234",
+    "type": "admin",
+    "active": true,
+    "login": false
+  },
+  {
+    "username": "Jimmy",
+    "password": "1234",
+    "type": "assisstant",
+    "active": true,
+    "login": false
+  }
 ]

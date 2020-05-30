@@ -1,5 +1,6 @@
 const express = require('express');
 const request = require('request');
+const fs = require('fs');
 const router = express.Router();
 
 const locations = require("../jsons/locations.json");
@@ -14,6 +15,13 @@ function checkDuplicate(data, input) {
       }
     })
     return matches
+}
+
+function writeJson(data, file) {
+    var json = JSON.stringify(data)
+    fs.writeFile(file, json, 'utf8', function(err) {
+        if (err) throw err
+    });
 }
 
 function validateLocation(input) {
@@ -33,7 +41,26 @@ function validateTour(input) {
 }
 
 function validateUser(input) {
-    if(input.hasOwnProperty('username') && input.hasOwnProperty('password') && input.hasOwnProperty('type')){
+    if(input.hasOwnProperty('username') && input.hasOwnProperty('password') && input.hasOwnProperty('type') && input.hasOwnProperty('active') && input.hasOwnProperty('login')){
+        return true
+    } else {
+        return false
+    }
+}
+
+function validateLogin(input) {
+    if(input.hasOwnProperty('username') && input.hasOwnProperty('password')) {
+        return true
+    } else {
+        return false
+    }
+}
+
+function loginUser(data, input) {
+    var index = data.findIndex(obj => obj.username == input.username);
+
+    if(data[index].username == input.username && data[index].password == input.password) {
+        data[index].login == true
         return true
     } else {
         return false
@@ -58,6 +85,8 @@ function updateUser(data, input) {
     var index = data.findIndex(obj => obj.username == input.username);
     data[index].password = input.password
     data[index].type = input.type
+    data[index].active = input.active
+    data[index].login = input.login
 }
 
 router.get('/', function(req, res, next) {
@@ -89,6 +118,7 @@ router.post('/add/location', function(req, res, next) {
     
     if(!isDuplicate && isValidLocation) {
         locations.push(req.body)
+        writeJson(locations, "jsons/locations.json")
         res.send("SUCCESS: Location added.")
     } else if (!isValidLocation) {
         res.send("ERROR: Invalid location.")
@@ -105,6 +135,7 @@ router.post('/add/tour', function(req, res, next) {
     
     if(!isDuplicate && isValidTour) {
         tours.push(req.body)
+        writeJson(tours, "jsons/tours.json")
         res.send("SUCCESS: Tour added.")
     } else if (!isValidTour) {
         res.send("ERROR: Invalid tour.")
@@ -121,6 +152,7 @@ router.post('/add/user', function(req, res, next) {
     
     if(!isDuplicate && isValidUser) {
         users.push(req.body)
+        writeJson(users, "jsons/users.json")
         res.send("SUCCESS: User added.")
     } else if (!isValidUser) {
         res.send("ERROR: Invalid user.")
@@ -137,6 +169,7 @@ router.post('/edit/location', function(req, res, next) {
 
     if(isDuplicate && isValidLocation) {
         updateLocation(locations, req.body)
+        writeJson(locations, "jsons/locations.json")
         res.send("SUCCESS: Location updated.")
     } else if(!isDuplicate) {
         res.send("ERROR: Location does not exist.")
@@ -153,6 +186,7 @@ router.post('/edit/tour', function(req, res, next) {
 
     if(isDuplicate && isValidTour) {
         updateTour(tours, req.body)
+        writeJson(tours, "jsons/tours.json")
         res.send("SUCCESS: Tour updated.")
     } else if(!isDuplicate) {
         res.send("ERROR: Tour does not exist.")
@@ -169,11 +203,33 @@ router.post('/edit/user', function(req, res, next) {
 
     if(isDuplicate && isValidUser) {
         updateUser(users, req.body)
+        writeJson(users, "jsons/users.json")
         res.send("SUCCESS: User updated.")
     } else if(!isDuplicate) {
         res.send("ERROR: User does not exist.")
     } else if(!isValidUser) {
         res.send("ERROR: Invalid user.")
+    } else {
+        res.send("ERROR: Unknown.")
+    }
+});
+
+router.post('/login', function(req, res, next) {
+    isDuplicate = checkDuplicate(users, req.body.username)
+    isValidLogin = validateLogin(req.body)
+
+    if(isDuplicate && isValidLogin) {
+        checkLogin = loginUser(users, req.body)
+        if(checkLogin) {
+            writeJson(users, "jsons/users.json")
+            res.send("SUCCESS: User logged in.")
+        } else {
+            res.send("ERROR: Username or password is incorrect.")
+        }
+    } else if(!isDuplicate) {
+        res.send("ERROR: User not found.")
+    } else if(!isValidLogin) {
+        res.send("ERROR: Invalid login.")
     } else {
         res.send("ERROR: Unknown.")
     }
