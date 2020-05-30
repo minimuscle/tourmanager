@@ -1,5 +1,6 @@
 const express = require('express');
 const request = require('request');
+const fs = require('fs');
 const router = express.Router();
 
 const locations = require("../jsons/locations.json");
@@ -14,6 +15,13 @@ function checkDuplicate(data, input) {
       }
     })
     return matches
+}
+
+function writeJson(data, file) {
+    var json = JSON.stringify(data)
+    fs.writeFile(file, json, 'utf8', function(err) {
+        if (err) throw err
+    });
 }
 
 function validateLocation(input) {
@@ -33,7 +41,7 @@ function validateTour(input) {
 }
 
 function validateUser(input) {
-    if(input.hasOwnProperty('username') && input.hasOwnProperty('password') && input.hasOwnProperty('type')){
+    if(input.hasOwnProperty('username') && input.hasOwnProperty('password') && input.hasOwnProperty('type') && input.hasOwnProperty('active') && input.hasOwnProperty('login')){
         return true
     } else {
         return false
@@ -58,6 +66,8 @@ function updateUser(data, input) {
     var index = data.findIndex(obj => obj.username == input.username);
     data[index].password = input.password
     data[index].type = input.type
+    data[index].active = input.active
+    data[index].login = input.login
 }
 
 router.get('/', function(req, res, next) {
@@ -121,6 +131,7 @@ router.post('/add/user', function(req, res, next) {
     
     if(!isDuplicate && isValidUser) {
         users.push(req.body)
+        writeJson(users, "jsons/users.json")
         res.send("SUCCESS: User added.")
     } else if (!isValidUser) {
         res.send("ERROR: Invalid user.")
