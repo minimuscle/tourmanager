@@ -12,16 +12,16 @@ Note: Use [Postman](https://www.postman.com/) for testing.
 URL: http://localhost:9000/api
 
 GET Request:  
-`/get/locations`  
-`/get/tours`  
-`/get/users`  
+- `/get/locations`  
+- `/get/tours`  
+- `/get/users`  
 
 POST Request:  
-`/add/location`  
-`/add/tour`  
-`/add/user`  
+- `/add/location`  
+- `/add/tour`  
+- `/add/user`  
 
 POST Request:  
-`/edit/location`  
-`/edit/tour`  
-`/edit/user`  
+- `/edit/location`  
+- `/edit/tour`  
+- `/edit/user`  
