@@ -60,7 +60,7 @@ function loginUser(data, input) {
     var index = data.findIndex(obj => obj.username == input.username);
 
     if(data[index].username == input.username && data[index].password == input.password) {
-        data[index].login == true
+        data[index].login = true
         return true
     } else {
         return false
