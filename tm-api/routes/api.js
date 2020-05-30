@@ -9,16 +9,37 @@ const users = require("../jsons/users.json");
 function checkDuplicate(data, input) {
     var matches = 0
     Object.keys(data).forEach(function(key) {
-      if(input == data[key].name){
+      if(input == data[key].name || input == data[key].username){
         matches++ 
       }
     })
     return matches
 }
 
-function validateJson(input) {
-
+function validateLocation(input) {
+    if(input.hasOwnProperty('name') && input.hasOwnProperty('coordinates') && input.hasOwnProperty('description') && input.hasOwnProperty('time')){
+        return true
+    } else {
+        return false
+    }
 }
+
+function validateTour(input) {
+    if(input.hasOwnProperty('name') && input.hasOwnProperty('type') && input.hasOwnProperty('locations') && input.hasOwnProperty('time')){
+        return true
+    } else {
+        return false
+    }
+}
+
+function validateUser(input) {
+    if(input.hasOwnProperty('username') && input.hasOwnProperty('password') && input.hasOwnProperty('type')){
+        return true
+    } else {
+        return false
+    }
+}
+
 
 
 router.get('/', function(req, res, next) {
@@ -44,18 +65,57 @@ router.get('/users', function(req, res, next) {
     })
 });
 
-
-router.post('/locations', function(req, res, next) {
+router.post('/location', function(req, res, next) {
     isDuplicate = checkDuplicate(locations, req.body.name)
-    isValidJson = validateJson(req.body)
+    isValidLocation = validateLocation(req.body)
     
-    if(!isDuplicate) {
+    if(!isDuplicate && isValidLocation) {
         locations.push(req.body)
         res.json({
             locations: locations
         })
+    } else if (!isValidLocation) {
+        res.send("ERROR: Invalid location.")
+    } else if (isDuplicate){
+        res.send("ERROR: Duplicate locations.")
     } else {
-        res.send("ERROR: Duplicate Entry")
+        res.send("ERROR: Unknown.")
+    }
+});
+
+router.post('/tour', function(req, res, next) {
+    isDuplicate = checkDuplicate(tours, req.body.name)
+    isValidTour = validateTour(req.body)
+    
+    if(!isDuplicate && isValidTour) {
+        tours.push(req.body)
+        res.json({
+            tours: tours
+        })
+    } else if (!isValidTour) {
+        res.send("ERROR: Invalid tour.")
+    } else if (isDuplicate){
+        res.send("ERROR: Duplicate tours.")
+    } else {
+        res.send("ERROR: Unknown.")
+    }
+});
+
+router.post('/user', function(req, res, next) {
+    isDuplicate = checkDuplicate(users, req.body.username)
+    isValidUser = validateUser(req.body)
+    
+    if(!isDuplicate && isValidUser) {
+        users.push(req.body)
+        res.json({
+            users: users
+        })
+    } else if (!isValidUser) {
+        res.send("ERROR: Invalid user.")
+    } else if (isDuplicate){
+        res.send("ERROR: Duplicate users.")
+    } else {
+        res.send("ERROR: Unknown.")
     }
 });
 
