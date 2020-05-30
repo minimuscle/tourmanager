@@ -31,7 +31,18 @@ export default class Login extends Component {
     }
   }
 
-  dashboard() {
+  login(name, password) {
+    fetch('http://localhost:9000/api/login', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        name: name,
+        password: password
+      })
+    })
     this.props.changeView('Locations');
   }
 
