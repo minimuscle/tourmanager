@@ -77,19 +77,19 @@ router.get('/', function(req, res, next) {
 
 router.get('/get/locations', function(req, res, next) {
     res.json({
-        locations: locations
+        data: locations
     })
 });
 
 router.get('/get/tours', function(req, res, next) {
     res.json({
-        tours: tours
+        data: tours
     })
 });
 
 router.get('/get/users', function(req, res, next) {
     res.json({
-        users: users
+        data: users
     })
 });
 
