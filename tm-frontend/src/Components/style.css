@@ -99,4 +99,9 @@ button:focus {
 
 .floatLeft {
     float: left;
+    text-align: left;
+}
+
+.floatLeft span {
+    color: #a7a7a7;
 }

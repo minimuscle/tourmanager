@@ -13,7 +13,7 @@ export default class Tours extends Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:9000/api/tours')
+    fetch('http://localhost:9000/api/get/tours')
       .then(res => res.json())
       .then(res => {
         if (res && res.data) {

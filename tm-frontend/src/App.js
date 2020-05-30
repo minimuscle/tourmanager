@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import Login from './Components/Login'
-import Dashboard from './Components/Dashboard'
 import Sidebar from './Components/Sidebar'
 import Locations from './Components/Locations'
 import Tours from './Components/Tours'
 import EditTours from './Components/EditTours'
 import EditLocations from './Components/EditLocations'
+import AddLocations from './Components/AddLocations'
 import Settings from './Components/Settings'
 import './App.css';
 
@@ -14,8 +14,28 @@ export default class App extends Component {
     super();
     this.state = {
       activeView: "",
+      location: "",
+      tour: "",
       user: "assistant"
     }
+  }
+
+  onChangeLocation(location) {
+    this.setState({
+      location: location
+    });
+    console.log(this.state.location);
+  }
+  
+  getLocation(){
+    return this.state.location
+  }
+
+  onChangeTour(tour) {
+    this.setState({
+      tour: tour
+    });
+    console.log(this.state.tour);
   }
 
   onChangeView(view) {
@@ -42,22 +62,32 @@ export default class App extends Component {
       case "Locations":
         return (
           <div><Sidebar changeView={this.onChangeView.bind(this)} />
-            <Locations changeView={this.onChangeView.bind(this)} user={this.selectedUser.bind(this)} className="Main" /></div>
+            <Locations changeView={this.onChangeView.bind(this)} changeLocation={this.onChangeLocation.bind(this)} user={this.selectedUser.bind(this)} className="Main" /></div>
         );
       case "Tours":
         return (
           <div><Sidebar changeView={this.onChangeView.bind(this)} />
-            <Tours changeView={this.onChangeView.bind(this)} user={this.selectedUser.bind(this)} className="Main" /></div>
+            <Tours changeView={this.onChangeView.bind(this)} changeTour={this.onChangeTour.bind(this)} user={this.selectedUser.bind(this)} className="Main" /></div>
         );
       case "EditTours":
         return (
           <div><Sidebar changeView={this.onChangeView.bind(this)} />
-            <EditTours changeView={this.onChangeView.bind(this)} user={this.selectedUser.bind(this)} className="Main" /></div>
+            <EditTours changeView={this.onChangeView.bind(this)} changeTour={this.onChangeTour.bind(this)} user={this.selectedUser.bind(this)} className="Main" /></div>
+        );
+      case "AddTours":
+        return (
+          <div><Sidebar changeView={this.onChangeView.bind(this)} />
+            <EditTours changeView={this.onChangeView.bind(this)} changeTour={this.onChangeTour.bind(this)} user={this.selectedUser.bind(this)} className="Main" /></div>
         );
       case "EditLocations":
         return (
           <div><Sidebar changeView={this.onChangeView.bind(this)} />
-            <EditLocations changeView={this.onChangeView.bind(this)} user={this.selectedUser.bind(this)} className="Main" /></div>
+            <EditLocations changeView={this.onChangeView.bind(this)} getLocation={this.state.location} user={this.selectedUser.bind(this)} className="Main" /></div>
+        );
+      case "AddLocations":
+        return (
+          <div><Sidebar changeView={this.onChangeView.bind(this)} />
+            <AddLocations changeView={this.onChangeView.bind(this)} changeLocation={this.onChangeLocation.bind(this)} user={this.selectedUser.bind(this)} className="Main" /></div>
         );
       case "Settings":
         return (

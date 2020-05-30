@@ -33,15 +33,24 @@ export default class Location extends Component {
             <Table.Cell>{val.coordinates}</Table.Cell>
             <Table.Cell>{val.description}</Table.Cell>
             <Table.Cell>{val.time} Seconds</Table.Cell>
-            <Table.Cell><Button icon size="small"><Icon name="edit"></Icon></Button></Table.Cell>
+            <Table.Cell><Button type="submit" icon size="small" onClick={() => {this.editLocationSpecific(val.name)}}><Icon name="edit"></Icon></Button></Table.Cell>
           </Table.Row>
         )
       })
     }
   }
 
+  editLocationSpecific(name) {
+    this.props.changeLocation(name)
+    this.props.changeView('EditLocations');
+  }
+
   editLocations() {
     this.props.changeView('EditLocations');
+  }
+
+  addLocations() {
+    this.props.changeView('AddLocations');
   }
 
   render() {
@@ -68,6 +77,7 @@ export default class Location extends Component {
                     labelPosition='left'
                     primary
                     size='small'
+                    onClick={this.addLocations.bind(this)}
                   >
                     <Icon name='map marker' /> Add New Location
                   </Button>

@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
 import './style.css'
-import { Header, Icon, Form, Input, TextArea, Dropdown } from 'semantic-ui-react'
+import { Header, Icon, Form, Input, TextArea } from 'semantic-ui-react'
 
 
 
-export default class EditLocation extends Component {
+export default class AddLocations extends Component {
   constructor(props) {
-    super(props);
+    super();
     this.state = {
-      apiResponse: '',
-      locationsName: []
-    };
+      name: '',
+      coordinates: '',
+      description: '',
+      length: '',
+    }
   }
 
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
@@ -18,7 +20,7 @@ export default class EditLocation extends Component {
   handleSubmit = () => {
     const { name, coordinates, description, length } = this.state
 
-    fetch('http://localhost:9000/api/edit/location', {
+    fetch('http://localhost:9000/api/add/location', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -35,32 +37,6 @@ export default class EditLocation extends Component {
     this.props.changeView("Locations");
   }
 
-  componentDidMount() {
-    fetch('http://localhost:9000/api/get/locations')
-      .then(res => res.json())
-      .then(res => {
-        if (res && res.data) {
-          this.setState({ apiResponse: [...this.state.apiResponse, ...res.data] })
-        }
-      });
-    this.setState({
-      name: this.props.getLocation
-    })
-  }
-  /**
-   * TODO: Set the list to be dynamic by the number of people
-   */
-
-  getLocations() {
-    if (this.state.apiResponse.length <= 0) {
-      return <div>Loading...</div>
-    } else {
-      return this.state.apiResponse.map((val, key) => {
-        return <Dropdown.Item key={key} text={val.name} />
-      })
-    }
-  }
-
   render() {
     const { name, coordinates, description, length } = this.state
     return (
@@ -68,22 +44,20 @@ export default class EditLocation extends Component {
         <div className="header">
           <Header as='h1' icon>
             <Icon name='map signs' />
-              Edit Locations
+              Add Locations
             <Header.Subheader>
-              Edit the details of each specific location
+              Create a new location
             </Header.Subheader>
           </Header>
           <div className='editForms'>
             <Form onSubmit={this.handleSubmit}>
               <Form.Field>
-                <label className="floatLeft">Location Name<br/><span>(Edit Location by typing name here)</span></label>
-                
+                <label className="floatLeft">Location Name</label>
                 <Input
                   name='name'
                   value={name}
                   onChange={this.handleChange}
-                  placeholder='Location Name'
-                />
+                  placeholder='Location Name' />
               </Form.Field>
               <Form.Field>
                 <label className="floatLeft">Co-ordinates</label>
@@ -102,7 +76,7 @@ export default class EditLocation extends Component {
                   placeholder="A Bag of potatoes is a dangerous thing" />
               </Form.Field>
               <Form.Field>
-                <label className="floatLeft">Length:</label>
+                <label>Length:</label>
                 <Input
                   name='length'
                   value={length}

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './style.css'
-import { Header, Icon, Button, Form, Input, Radio, Checkbox } from 'semantic-ui-react'
+import { Header, Icon, Form, Input, Radio, Checkbox } from 'semantic-ui-react'
 
 
 

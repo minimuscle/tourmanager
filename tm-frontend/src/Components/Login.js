@@ -12,7 +12,7 @@ export default class Login extends Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:9000/api/locations')
+    fetch('http://localhost:9000/api/get/locations')
       .then(res => res.json())
       .then(res => {
         if (res && res.data) {
