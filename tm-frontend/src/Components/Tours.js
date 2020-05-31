@@ -34,12 +34,25 @@ export default class Tours extends Component {
             <Table.Cell>{val.locations.join(', ')}</Table.Cell>
             <Table.Cell>{val.time} Seconds</Table.Cell>
             <Table.Cell><Button icon size="small"><Icon name="edit"></Icon></Button></Table.Cell>
+            <Table.Cell><Button negative type="submit" icon size="small" onClick={() => {this.deleteTour(val.name)}}><Icon name="delete"></Icon></Button></Table.Cell>
           </Table.Row>
         )
       })
     }
   }
 
+  deleteTour(name) {
+    fetch('http://localhost:9000/api/delete/tour', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        name: name,
+      })
+    })
+  }
 
   editTours() {
     this.props.changeView('EditTours');
@@ -66,7 +79,7 @@ export default class Tours extends Component {
           <Table striped celled>
             <Table.Header>
               <Table.Row>
-                <Table.HeaderCell colSpan='5'>
+                <Table.HeaderCell colSpan='6'>
                   <Button
                     floated='right'
                     icon
@@ -88,6 +101,7 @@ export default class Tours extends Component {
                 <Table.HeaderCell>Locations</Table.HeaderCell>
                 <Table.HeaderCell>Time</Table.HeaderCell>
                 <Table.HeaderCell>Edit</Table.HeaderCell>
+                <Table.HeaderCell>Delete</Table.HeaderCell>
               </Table.Row>
             </Table.Header>
             <Table.Body>

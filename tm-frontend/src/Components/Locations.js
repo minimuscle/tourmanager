@@ -34,10 +34,24 @@ export default class Location extends Component {
             <Table.Cell>{val.description}</Table.Cell>
             <Table.Cell>{val.time} Seconds</Table.Cell>
             <Table.Cell><Button type="submit" icon size="small" onClick={() => {this.editLocationSpecific(val.name)}}><Icon name="edit"></Icon></Button></Table.Cell>
+            <Table.Cell><Button negative type="submit" icon size="small" onClick={() => {this.deleteLocation(val.name)}}><Icon name="delete"></Icon></Button></Table.Cell>
           </Table.Row>
         )
       })
     }
+  }
+
+  deleteLocation(name) {
+    fetch('http://localhost:9000/api/delete/location', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        name: name,
+      })
+    })
   }
 
   editLocationSpecific(name) {
@@ -70,7 +84,7 @@ export default class Location extends Component {
           <Table striped celled>
             <Table.Header>
               <Table.Row>
-                <Table.HeaderCell colSpan='5'>
+                <Table.HeaderCell colSpan='6'>
                   <Button
                     floated='right'
                     icon
@@ -92,6 +106,7 @@ export default class Location extends Component {
                 <Table.HeaderCell>Description</Table.HeaderCell>
                 <Table.HeaderCell>Time</Table.HeaderCell>
                 <Table.HeaderCell>Edit</Table.HeaderCell>
+                <Table.HeaderCell>Delete</Table.HeaderCell>
               </Table.Row>
             </Table.Header>
             <Table.Body>

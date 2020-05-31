@@ -244,7 +244,7 @@ router.post('/edit/user', function(req, res, next) {
 });
 
 router.post('/delete/location', function(req, res, next) {
-	isDuplicate = checkDuplicate(location, req.body.name)
+	isDuplicate = checkDuplicate(locations, req.body.name)
 
 	if(req.body.hasOwnProperty('name')) {
 		if(isDuplicate) {
