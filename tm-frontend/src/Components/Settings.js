@@ -8,7 +8,7 @@ const options = [
 ]
 
 //These 'users' are just placeholders for the actual users once the API is done
-const users = [
+let users = [
   { text: 'James', value: 'james' },
   { text: 'Jimmy', value: 'jimmy' },
   { text: 'Jane', value: 'jane' },
@@ -29,24 +29,45 @@ export default class Settings extends Component {
     };
   }
 
+  handleChange = (e, { name, value }) => this.setState({ [name]: value })
+
   componentDidMount() {
-    fetch('http://localhost:9000/api/users')
+    fetch('http://localhost:9000/api/get/users')
       .then(res => res.json())
       .then(res => {
         if (res && res.data) {
           this.setState({ apiResponse: [...this.state.apiResponse, ...res.data] })
         }
       });
+      this.renderUsers();
   }
 
   renderUsers() {
     if (this.state.apiResponse.length <= 0) {
-      return <div>Loading...</div>
+      users = []
+      console.log("ERROR")
     } else {
-      return this.state.apiResponse.map((val, key) => {
-        return <p>this {val.type}</p>
-      })
+      users = this.state.apiResponse.map((val, key) => ({ key: key, text: val.username, value: val.username }));
+      console.log("GOOD TO GO")
     }
+  }
+
+  createUser = () => {
+    const { name, password, type } = this.state
+    fetch('http://localhost:9000/api/add/user', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        username: name,
+        password: password,
+        type: type,
+        active: true,
+        login: false
+      })
+    })
   }
 
   handleSubmit() {
@@ -58,6 +79,8 @@ export default class Settings extends Component {
   }
 
   render() {
+    const { name, password, type } = this.state
+    this.renderUsers()
     return (
       <div className="dashboard">
         <div className="header">
@@ -74,21 +97,32 @@ export default class Settings extends Component {
           <Header as="h2">
             Create new Account
           </Header>
-          <Form onSubmit={this.handleSubmit.bind(this)}>
+          <Form onSubmit={this.createUser}>
             <Form.Input
               label='Username'
               placeholder="JohnSmithy"
-              name="username" />
+              name="name"
+              value={name}
+              onChange={this.handleChange} />
             <Form.Input
+              type='password'
               label='Password'
               placeholder="*********"
-              name="password" />
-            <Form.Select fluid label="Role" options={options} placeholder="Role" />
+              name="password"
+              value={password}
+              onChange={this.handleChange} />
+            <Form.Select fluid 
+            label="Role" 
+            options={options}
+            name='type' 
+            value={type} 
+            placeholder="Role" 
+            onChange={this.handleChange} />
             <Form.Button primary content="Create Account"></Form.Button>
           </Form>
         </div>
 
-
+        {/* THIS BLOCK IS ONLY FOR LATER FUNCTIONALITY
         <div className="settingsTab">
           <Header as="h2">
             Change Password
@@ -109,14 +143,14 @@ export default class Settings extends Component {
               name="password" />
             <Form.Button positive content="Change Password"></Form.Button>
           </Form>
-        </div>
+        </div>*/}
 
         <div className="settingsTab2">
           <Header as="h2">
             Deactivate User
           </Header>
           <Form onSubmit={this.handleSubmit.bind(this)}>
-            <Form.Select fluid label="User" options={users} placeholder="User" />
+            <Form.Select fluid label="User" options={users} placeholder="User"/>
             <Form.Button negative content="Deactivate User"></Form.Button>
           </Form>
         </div>

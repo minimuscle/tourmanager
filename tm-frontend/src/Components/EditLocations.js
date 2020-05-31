@@ -3,7 +3,6 @@ import './style.css'
 import { Header, Icon, Form, Input, TextArea, Dropdown } from 'semantic-ui-react'
 
 
-
 export default class EditLocation extends Component {
   constructor(props) {
     super(props);

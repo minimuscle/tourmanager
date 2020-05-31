@@ -76,7 +76,7 @@ button:focus {
 .settingsTab {
     float: left;
     padding: 30px;
-    width: 33%;
+    width: 50%;
     border-right: 1px solid #cccccc;
 
 }
