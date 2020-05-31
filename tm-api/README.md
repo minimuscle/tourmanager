@@ -25,3 +25,12 @@ POST Request:
 - `/edit/location`  
 - `/edit/tour`  
 - `/edit/user`  
+
+POST Request:  
+- `/delete/location`  
+- `/delete/tour`  
+- `/delete/user`
+
+POST Request:  
+- `/login`  
+- `/logout`    
