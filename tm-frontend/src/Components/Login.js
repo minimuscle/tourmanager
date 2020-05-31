@@ -43,6 +43,10 @@ export default class Login extends Component {
         password: password
       })
     })
+    
+  }
+
+  dashbaord(){
     this.props.changeView('Locations');
   }
 
