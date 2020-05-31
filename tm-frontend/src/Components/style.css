@@ -76,7 +76,7 @@ button:focus {
 .settingsTab {
     float: left;
     padding: 30px;
-    width: 33%;
+    width: 50%;
     border-right: 1px solid #cccccc;
 
 }
@@ -89,4 +89,19 @@ button:focus {
 
 .locations {
     padding: 30px;
+}
+
+.editForms {
+    padding: 30px;
+    margin-left: 30%;
+    margin-right: 30%;
+}
+
+.floatLeft {
+    float: left;
+    text-align: left;
+}
+
+.floatLeft span {
+    color: #a7a7a7;
 }
