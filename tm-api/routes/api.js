@@ -110,12 +110,12 @@ function updateUser(data, input) {
 
 function deleteUser(data, input) {
 	var index = data.findIndex(obj => obj.username == input.username);
-	delete data[index];
+	data.splice(index, index);
 }
 
 function deleteData(data, input) {
 	var index = data.findIndex(obj => obj.name == input.name);
-	delete data[index];
+	data.splice(index, index);
 }
 
 router.get('/', function(req, res, next) {
