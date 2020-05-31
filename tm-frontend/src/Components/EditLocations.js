@@ -52,18 +52,21 @@ export default class EditLocation extends Component {
    */
 
   getLocations() {
+    let locations = [];
     if (this.state.apiResponse.length <= 0) {
       return <div>Loading...</div>
     } else {
-      return this.state.apiResponse.map((val, key) => {
-        return <Dropdown.Item key={key} text={val.name} />
-      })
+      return (
+        locations = this.state.apiResponse.map((val, key) => ({id: key, value: val.name, isChecked: false})),
+        console.log(locations)
+      )
     }
   }
 
   render() {
     const { name, coordinates, description, length } = this.state
     return (
+      
       <div className="dashboard">
         <div className="header">
           <Header as='h1' icon>

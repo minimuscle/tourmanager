@@ -46,7 +46,7 @@ export default class Login extends Component {
     
   }
 
-  dashbaord(){
+  dashboard(){
     this.props.changeView('Locations');
   }
 

@@ -45,12 +45,16 @@ export default class Tours extends Component {
     this.props.changeView('EditTours');
   }
 
+  addTours() {
+    this.props.changeView('AddTours');
+  }
+
   render() {
     return (
       <div className="dashboard">
         <div className="header">
           <Header as='h1' icon>
-            <Icon name='move' />
+            <Icon name='map marker' />
         Tours
         <Header.Subheader>
               View Tours
@@ -69,6 +73,7 @@ export default class Tours extends Component {
                     labelPosition='left'
                     primary
                     size='small'
+                    onClick={this.addTours.bind(this)}
                   >
                     <Icon name='map marker' /> Add New Tour
                   </Button>

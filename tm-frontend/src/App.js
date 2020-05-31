@@ -4,6 +4,7 @@ import Sidebar from './Components/Sidebar'
 import Locations from './Components/Locations'
 import Tours from './Components/Tours'
 import EditTours from './Components/EditTours'
+import AddTours from './Components/AddTours'
 import EditLocations from './Components/EditLocations'
 import AddLocations from './Components/AddLocations'
 import Settings from './Components/Settings'
@@ -77,7 +78,7 @@ export default class App extends Component {
       case "AddTours":
         return (
           <div><Sidebar changeView={this.onChangeView.bind(this)} />
-            <EditTours changeView={this.onChangeView.bind(this)} changeTour={this.onChangeTour.bind(this)} user={this.selectedUser.bind(this)} className="Main" /></div>
+            <AddTours changeView={this.onChangeView.bind(this)} changeTour={this.onChangeTour.bind(this)} user={this.selectedUser.bind(this)} className="Main" /></div>
         );
       case "EditLocations":
         return (

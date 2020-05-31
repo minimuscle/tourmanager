@@ -1,38 +1,27 @@
 import React, { Component } from 'react';
 import './style.css'
-import { Header, Icon, Form, Input, Radio, Checkbox } from 'semantic-ui-react'
+import { Header, Icon, Form, Input, TextArea, Radio } from 'semantic-ui-react'
 
 
 
-export default class EditTours extends Component {
+export default class AddTours extends Component {
   constructor(props) {
-    super(props);
+    super();
     this.state = {
-      apiResponse: '',
-      isSelected: false,
-      items: []
-    };
+      name: '',
+      coordinates: '',
+      description: '',
+      length: '',
+    }
   }
 
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
   handleRadioChange = (e, { value }) => this.setState({ value })
 
-  handler = (e) => {
-    try {
-    var isSelected = !this.state.isSelected,
-        items = this.state.items.push(e.target.value);
-    this.setState({isSelected: isSelected, items: items})
-
-    console.log(isSelected + " PLUS " + items)
-    } finally{
-      console.log("error")
-    }
-  }
-
   handleSubmit = () => {
     const { name, value, location, time } = this.state
-    console.log(name +"PLUS"+ value +"PLUS" + location +"PLUS" + time)
-    fetch('http://localhost:9000/api/edit/tour', {
+
+    fetch('http://localhost:9000/api/add/tour', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -47,39 +36,6 @@ export default class EditTours extends Component {
     })
 
     this.props.changeView("Tours");
-  }
-
-  componentDidMount() {
-    fetch('http://localhost:9000/api/get/tours')
-      .then(res => res.json())
-      .then(res => {
-        if (res && res.data) {
-          this.setState({ apiResponse: [...this.state.apiResponse, ...res.data] })
-        }
-      });
-      
-    this.setState({
-      name: this.props.getTour
-    })
-
-    
-  }
-
-  getLocations() {
-    let locations = [];
-    try{
-    if (this.state.apiResponse.length <= 0) {
-      return console.log("NOT VALID")
-    } else {
-      return (
-        this.state.apiResponse.map((val, key) => {
-          return locations = [...locations, ...[{id: key, value: val.name, isChecked: false}]]}),
-        console.log(locations))
-        
-    }
-  } finally {
-
-  }
   }
 
   render() {
