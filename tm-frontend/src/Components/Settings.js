@@ -47,8 +47,18 @@ export default class Settings extends Component {
       users = []
       console.log("ERROR")
     } else {
-      users = this.state.apiResponse.map((val, key) => ({ key: key, text: val.username, value: val.username }));
+      users = this.state.apiResponse.map((val, key) => ({ 
+        key: key, 
+        text: val.username,
+        value: val.username,
+        password: val.password,
+        type: val.type,
+        active: val.active,
+        login: val.login
+      })
+    );
       console.log("GOOD TO GO")
+      console.log(users)
     }
   }
 
@@ -88,8 +98,26 @@ export default class Settings extends Component {
     })
   }
 
+  deactivateUser = () => {
+    const { selectUser } = this.state
+    fetch('http://localhost:9000/api/edit/user', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        username: selectUser,
+        password: 'qwerty',
+        type: 'assistant',
+        active: false,
+        login: false
+      })
+    })
+  }
+
   render() {
-    const { name, password, type } = this.state
+    const { name, password, type, selectUser } = this.state
     this.renderUsers()
     return (
       <div className="dashboard">
@@ -163,6 +191,8 @@ export default class Settings extends Component {
             <Form.Select
             fluid 
             label="User"
+            name='selectUser'
+            value={selectUser}
             options={users}
             onChange={this.handleChange}
             placeholder="User"/>
