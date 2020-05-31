@@ -70,11 +70,21 @@ export default class Settings extends Component {
     })
   }
 
-  handleSubmit() {
-    this.setState({
-      username: '',
-      password: '',
-      role: 'Role'
+  handleSubmit= () => {
+    const { name, password, type } = this.state
+    fetch('http://localhost:9000/api/edit/user', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        username: name,
+        password: password,
+        type: type,
+        active: true,
+        login: false
+      })
     })
   }
 
@@ -149,8 +159,13 @@ export default class Settings extends Component {
           <Header as="h2">
             Deactivate User
           </Header>
-          <Form onSubmit={this.handleSubmit.bind(this)}>
-            <Form.Select fluid label="User" options={users} placeholder="User"/>
+          <Form onSubmit={this.deactivateUser}>
+            <Form.Select
+            fluid 
+            label="User"
+            options={users}
+            onChange={this.handleChange}
+            placeholder="User"/>
             <Form.Button negative content="Deactivate User"></Form.Button>
           </Form>
         </div>

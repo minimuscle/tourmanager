@@ -296,7 +296,7 @@ router.post('/login', function(req, res, next) {
         checkLogin = loginUser(users, req.body)
         if(checkLogin) {
             writeJson(users, "jsons/users.json")
-            res.send("SUCCESS: User logged in.")
+            res.sendStatus(202)
         } else {
             res.send("ERROR: Username or password is incorrect.")
         }
