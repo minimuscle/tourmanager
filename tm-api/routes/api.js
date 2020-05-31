@@ -108,6 +108,16 @@ function updateUser(data, input) {
     data[index].login = input.login
 }
 
+function deleteUser(data, input) {
+	var index = data.findIndex(obj => obj.username == input.username);
+	delete data[index];
+}
+
+function deleteData(data, input) {
+	var index = data.findIndex(obj => obj.name == input.name);
+	delete data[index];
+}
+
 router.get('/', function(req, res, next) {
 	console.log("GET recieved")
 	res.send("GET recieved")
@@ -231,6 +241,51 @@ router.post('/edit/user', function(req, res, next) {
     } else {
         res.send("ERROR: Unknown.")
     }
+});
+
+router.post('/delete/location', function(req, res, next) {
+	isDuplicate = checkDuplicate(location, req.body.name)
+
+	if(req.body.hasOwnProperty('name')) {
+		if(isDuplicate) {
+			deleteData(locations, req.body)
+			res.send("SUCCESS: Location deleted.")
+		} else {
+			res.send("ERROR: Location does not exist.")
+		}
+	} else {
+		res.send("ERROR: Invalid location.")
+	}
+});
+
+router.post('/delete/tour', function(req, res, next) {
+	isDuplicate = checkDuplicate(tours, req.body.name)
+
+	if(req.body.hasOwnProperty('name')) {
+		if(isDuplicate) {
+			deleteData(tours, req.body)
+			res.send("SUCCESS: Tour deleted.")
+		} else {
+			res.send("ERROR: Tour does not exist.")
+		}
+	} else {
+		res.send("ERROR: Invalid tour.")
+	}
+});
+
+router.post('/delete/user', function(req, res, next) {
+	isDuplicate = checkDuplicate(users, req.body.username)
+
+	if(req.body.hasOwnProperty('username')) {
+		if(isDuplicate) {
+			deleteUser(users, req.body)
+			res.send("SUCCESS: User deleted.")
+		} else {
+			res.send("ERROR: User does not exist.")
+		}
+	} else {
+		res.send("ERROR: Invalid user.")
+	}
 });
 
 router.post('/login', function(req, res, next) {
