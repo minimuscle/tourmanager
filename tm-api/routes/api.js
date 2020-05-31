@@ -56,11 +56,30 @@ function validateLogin(input) {
     }
 }
 
+function validateLogout(input) {
+    if(input.hasOwnProperty('username')) {
+        return true
+    } else {
+        return false
+    }
+}
+
 function loginUser(data, input) {
     var index = data.findIndex(obj => obj.username == input.username);
 
     if(data[index].username == input.username && data[index].password == input.password) {
         data[index].login = true
+        return true
+    } else {
+        return false
+    }
+}
+
+function logoutUser(data, input) {
+    var index = data.findIndex(obj => obj.username == input.username);
+
+    if(data[index].username == input.username && data[index].login) {
+        data[index].login = false
         return true
     } else {
         return false
@@ -87,6 +106,16 @@ function updateUser(data, input) {
     data[index].type = input.type
     data[index].active = input.active
     data[index].login = input.login
+}
+
+function deleteUser(data, input) {
+	var index = data.findIndex(obj => obj.username == input.username);
+	delete data[index];
+}
+
+function deleteData(data, input) {
+	var index = data.findIndex(obj => obj.name == input.name);
+	delete data[index];
 }
 
 router.get('/', function(req, res, next) {
@@ -214,6 +243,51 @@ router.post('/edit/user', function(req, res, next) {
     }
 });
 
+router.post('/delete/location', function(req, res, next) {
+	isDuplicate = checkDuplicate(location, req.body.name)
+
+	if(req.body.hasOwnProperty('name')) {
+		if(isDuplicate) {
+			deleteData(locations, req.body)
+			res.send("SUCCESS: Location deleted.")
+		} else {
+			res.send("ERROR: Location does not exist.")
+		}
+	} else {
+		res.send("ERROR: Invalid location.")
+	}
+});
+
+router.post('/delete/tour', function(req, res, next) {
+	isDuplicate = checkDuplicate(tours, req.body.name)
+
+	if(req.body.hasOwnProperty('name')) {
+		if(isDuplicate) {
+			deleteData(tours, req.body)
+			res.send("SUCCESS: Tour deleted.")
+		} else {
+			res.send("ERROR: Tour does not exist.")
+		}
+	} else {
+		res.send("ERROR: Invalid tour.")
+	}
+});
+
+router.post('/delete/user', function(req, res, next) {
+	isDuplicate = checkDuplicate(users, req.body.username)
+
+	if(req.body.hasOwnProperty('username')) {
+		if(isDuplicate) {
+			deleteUser(users, req.body)
+			res.send("SUCCESS: User deleted.")
+		} else {
+			res.send("ERROR: User does not exist.")
+		}
+	} else {
+		res.send("ERROR: Invalid user.")
+	}
+});
+
 router.post('/login', function(req, res, next) {
     isDuplicate = checkDuplicate(users, req.body.username)
     isValidLogin = validateLogin(req.body)
@@ -230,6 +304,27 @@ router.post('/login', function(req, res, next) {
         res.send("ERROR: User not found.")
     } else if(!isValidLogin) {
         res.send("ERROR: Invalid login.")
+    } else {
+        res.send("ERROR: Unknown.")
+    }
+});
+
+router.post('/logout', function(req, res, next) {
+    isDuplicate = checkDuplicate(users, req.body.username)
+    isValidLogout = validateLogout(req.body)
+
+    if(isDuplicate && isValidLogout) {
+        checkLogout = logoutUser(users, req.body)
+        if(checkLogout) {
+            writeJson(users, "jsons/users.json")
+            res.send("SUCCESS: User logged out.")
+        } else {
+            res.send("ERROR: User is already logged out.")
+        }
+    } else if(!isDuplicate) {
+        res.send("ERROR: User not found.")
+    } else if(!isValidLogin) {
+        res.send("ERROR: Invalid logout.")
     } else {
         res.send("ERROR: Unknown.")
     }
